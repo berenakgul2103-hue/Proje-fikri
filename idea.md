@@ -1,69 +1,28 @@
-# Akıllı Hibrit Atık Ayrıştırma Sistemi (Sensör Füzyonu)
+🔴 Problem
+Evlerde ve endüstriyel tesislerde çöplerin yanlış ayrıştırılması, geri dönüşüm verimliliğini ciddi oranda düşürmektedir. Karışan farklı türdeki atıklar, geri dönüşüm sürecinde "kontaminasyon" (kirlenme) yaratarak ham madde geri kazanımını imkansız hale getirmektedir. Bireylerin hangi atığın hangi kategoriye (plastik, metal, kağıt, cam) girdiğinden emin olamaması, sürdürülebilir bir atık yönetiminin önündeki en büyük engeldir.
 
-## 📌 Proje Özeti
-Bu proje, geleneksel sadece görüntü işlemeye dayalı atık ayrıştırma sistemlerinin eksiklerini; **ağırlık, nem, metal iletkenliği ve fiziksel boyut** verilerini hibrit bir yapay zeka modeliyle birleştirerek çözmeyi amaçlar.
+👥 Kullanıcı
+Çevre bilincine sahip, evinde atık ayrıştırmak isteyen bireyler.
 
----
+Akıllı şehir projeleri kapsamında teknolojik çözümler arayan belediyeler.
 
-## 🚀 Temel Problem ve Sektör Boşluğu
-Mevcut sistemler (AMP Robotics, Bin-e vb.) büyük oranda kameraya güvenir. Ancak:
-- İçinde sıvı olan bir plastik şişe ile boş olanı ayıramazlar.
-- Kirli/yağlı kağıt ile temiz kağıdı ayırt etmekte zorlanırlar.
-- Sadece görsel benzerlik nedeniyle yanlış sınıflama yapabilirler.
+Geri dönüşüm toplama verimliliğini artırmak isteyen özel işletmeler ve kampüsler.
 
-**Çözümümüz:** Yapay zekayı sadece "görmeye" değil, "hissetmeye" de zorlamak.
+🤖 AI'nın Rolü
+Yapay zeka, sisteme bağlı bir kamera aracılığıyla atılan nesneyi gerçek zamanlı olarak analiz eder. Bilgisayarlı Görü (Computer Vision) ve Nesne Tanıma (Object Detection) algoritmalarını kullanarak nesnenin hangi materyalden yapıldığını saniyeler içinde tespit eder. Kullanıcıya görsel veya sesli komutla hangi kutuyu kullanması gerektiğini söyleyerek hatalı ayrıştırmayı sıfıra indirir.
 
----
+🏁 Rakip Durumu
+Geleneksel Ayrıştırma Kutuları: Tamamen kullanıcı bilgisine dayalıdır, hata payı yüksektir ve kontaminasyona açıktır.
 
-## 🛠 Teknik Mimari (Hibrit Sensör Seti)
+Endüstriyel Büyük Tesisler: Çok pahalıdır ve atık kaynağa ulaşmadan (çöp kamyonunda) karıştığı için verimi düşüktür.
 
-| Sensör Tipi | Görevi | AI Modelindeki Rolü |
-| :--- | :--- | :--- |
-| **Kamera (OpenCV)** | Nesne tanıma ve form analizi | Görüntü Sınıflandırma (CNN) |
-| **Yük Hücresi (Load Cell)** | Kütle ölçümü | Doluluk ve materyal yoğunluk tahmini |
-| **Endüktif Sensör** | Metal varlığı tespiti | Kesin metal/metal dışı ayrımı |
-| **Nem Sensörü** | Kontaminasyon ölçümü | Geri dönüştürülebilirlik skoru |
+Genel Arama Motorları (Google Lens vb.): Atık özelinde optimize edilmemiştir ve belediye odaklı kategorizasyon sunmaz.
 
----
+Farkımız: Projemiz, doğrudan son kullanıcıya hitap eden, düşük maliyetli donanımlara (webcam, Raspberry Pi vb.) entegre olabilen ve atık özelinde eğitilmiş bir yazılım çözümüdür.
 
-## 🧠 Yapay Zeka Yaklaşımı: Data Fusion
-Sistem, kameradan gelen **Piksel Verisi** ile sensörlerden gelen **Sayısal Veriyi** (Tabular Data) birleştirir. 
-- **Görüntü Kolu:** Resnet veya MobileNet mimarisi.
-- **Sensör Kolu:** Basit bir Çok Katmanlı Algılayıcı (MLP).
-- **Birleşim:** İki koldan gelen veriler "Concatenate" edilerek nihai sınıflandırma yapılır.
+🎯 Başarı Kriteri
+Atıkların sistem tarafından %90 ve üzeri doğruluk oranıyla sınıflandırılması.
 
----
+Görüntünün işlenip sonucun kullanıcıya iletilme süresinin 2 saniyenin altında kalması.
 
-## 🎯 Hedef Kullanıcılar
-1. **Endüstriyel Tesisler:** Kimyasal ve tehlikeli atık yönetimi yapan fabrikalar.
-2. **Akıllı Şehirler:** Belediyeler için hata payı düşük akıllı konteynerler.
-3. **Laboratuvarlar:** Hassas materyal ayrıştırması gereken Ar-Ge merkezleri.
-
----
-
-## 📈 Farklılaşma (USP)
-- **Yüksek Doğruluk:** %99'a varan metal ve sıvı içeriği tespiti.
-- **Maliyet Etkin:** Pahalı spektroskopi cihazları yerine ucuz hibrit sensörler.
-- **Mühendislik Yaklaşımı:** Malzeme bilgisi ve proses otomasyonunun yazılımla birleşimi.
-# Akıllı Hibrit Atık Ayrıştırma Sistemi (Sensör Füzyonu)
-
-## 1. Problem: Ne Çözüyorum?
-Geleneksel atık ayrıştırma sistemleri ağırlıklı olarak sadece görüntü işlemeye (kamera) dayanır. Bu durum; içi sıvı dolu pet şişelerin, metal görünümlü plastiklerin veya kirli atıkların yanlış sınıflandırılmasına neden olur. Projem, yapay zekayı fiziksel sensör verileriyle besleyerek bu hataları minimize etmeyi ve geri dönüşüm verimliliğini artırmayı hedefler.
-
-## 2. Kullanıcı: Bu Uygulamayı Kim Kullanacak?
-* **Endüstriyel Tesisler:** Kimyasal ve tehlikeli atık üretimi yapan fabrikalar.
-* **Akıllı Belediyeler:** Sıfır atık politikası izleyen şehir yönetimleri.
-* **Geri Dönüşüm Merkezleri:** Otomasyon verimliliğini artırmak isteyen özel işletmeler.
-
-## 3. AI'ın Rolü: Yapay Zeka Bu Çözümde Ne Yapıyor?
-Yapay zeka bu sistemde bir **"Sensör Füzyon Merkezi"** olarak çalışır. Kameradan gelen görsel veriyi (derin öğrenme), yük hücresinden gelen ağırlık verisini ve endüktif sensörden gelen metal sinyallerini eş zamanlı işler. Tüm bu verileri birleştirerek nesnenin hangi hazneye gideceğine dair en doğru kararı saniyeler içinde verir.
-
-## 4. Rakip Durum: Benzer Çözümler Var mı? Benimki Nasıl Farklı?
-* **Rakipler:** AMP Robotics, Greyparrot ve Bin-e gibi firmalar genellikle yüksek maliyetli ve sadece görüntü odaklı çözümler sunar.
-* **Farkımız:** Sadece "görmeye" değil, ağırlık ve nem gibi fiziksel verilere dayalı bir doğrulama katmanı eklememiz. Bu, özellikle kimya mühendisliği perspektifiyle atığın materyal analizini çok daha ucuza ve hassas yapmamızı sağlar.
-
-## 5. Başarı Kriteri: Bu Proje Başarılı Olursa Ne Değişecek?
-Proje başarıya ulaştığında;
-* Geri dönüşüm tesislerindeki "yanlış ayırma" oranı %15'lerden %1'in altına düşecek.
-* Manuel ayrıştırma maliyetleri azalacak.
-* Daha saf hammadde elde edilerek döngüsel ekonomiye ve çevresel sürdürülebilirliğe doğrudan katkı sağlanacak.
+Yanlış kutuya atım oranının manuel sisteme göre %50'den fazla iyileştirilmesi.
