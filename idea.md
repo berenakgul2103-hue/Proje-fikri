@@ -1,28 +1,54 @@
-🔴 Problem
-Evlerde ve endüstriyel tesislerde çöplerin yanlış ayrıştırılması, geri dönüşüm verimliliğini ciddi oranda düşürmektedir. Karışan farklı türdeki atıklar, geri dönüşüm sürecinde "kontaminasyon" (kirlenme) yaratarak ham madde geri kazanımını imkansız hale getirmektedir. Bireylerin hangi atığın hangi kategoriye (plastik, metal, kağıt, cam) girdiğinden emin olamaması, sürdürülebilir bir atık yönetiminin önündeki en büyük engeldir.
+Proje Fikri: AI Destekli Akıllı Atık Ayrıştırma ve Kişisel Karbon Ayak İzi Takip Sistemi
+1. Problem Tanımı
+Atıkların yanlış ayrıştırılması sadece bir lojistik sorun değil, aynı zamanda ciddi bir karbon salınımı kaynağıdır. Bireyler geri dönüşüm yaptıklarında bunun çevreye olan somut etkisini (kaç ağaç kurtuldu, ne kadar CO 
+2
+​
+  engellendi) göremedikleri için motivasyon kaybı yaşamakta ve sürdürülebilir alışkanlıklar edinmekte zorlanmaktadır.
 
-👥 Kullanıcı
-Çevre bilincine sahip, evinde atık ayrıştırmak isteyen bireyler.
+2. Çözüm (AI + Veri Analitiği)
+Sistem, atığı sadece türüne göre ayırmakla kalmaz, ayrıştırılan her bir nesnenin yaşam döngüsü analizini yaparak kişisel karbon ayak izi azalışını gerçek zamanlı hesaplar.
 
-Akıllı şehir projeleri kapsamında teknolojik çözümler arayan belediyeler.
+Görüntü İşleme: Atığın türünü (plastik, metal, cam vb.) ve yaklaşık ağırlığını/hacmini belirler.
 
-Geri dönüşüm toplama verimliliğini artırmak isteyen özel işletmeler ve kampüsler.
+Emisyon Hesaplama: Ayrıştırılan materyalin geri dönüşümü sayesinde engellenen karbon salınımını (kg/CO 
+2
+​
+  cinsinden) hesaplayan bir algoritma çalıştırır.
 
-🤖 AI'nın Rolü
-Yapay zeka, sisteme bağlı bir kamera aracılığıyla atılan nesneyi gerçek zamanlı olarak analiz eder. Bilgisayarlı Görü (Computer Vision) ve Nesne Tanıma (Object Detection) algoritmalarını kullanarak nesnenin hangi materyalden yapıldığını saniyeler içinde tespit eder. Kullanıcıya görsel veya sesli komutla hangi kutuyu kullanması gerektiğini söyleyerek hatalı ayrıştırmayı sıfıra indirir.
+Geri Bildirim: Kullanıcıya "Bu plastik şişeyi geri dönüştürerek X gram karbon salınımını engelledin" mesajını iletir.
 
-🏁 Rakip Durumu
-Geleneksel Ayrıştırma Kutuları: Tamamen kullanıcı bilgisine dayalıdır, hata payı yüksektir ve kontaminasyona açıktır.
+3. Temel Özellikler (Yeni Odak)
+Akıllı Tanıma: YOLOv8 veya benzeri modellerle hızlı materyal sınıflandırma.
 
-Endüstriyel Büyük Tesisler: Çok pahalıdır ve atık kaynağa ulaşmadan (çöp kamyonunda) karıştığı için verimi düşüktür.
+Karbon Skorlama: Hammadde üretimi vs. Geri dönüşüm arasındaki emisyon farkını baz alan dinamik hesaplama tablosu.
 
-Genel Arama Motorları (Google Lens vb.): Atık özelinde optimize edilmemiştir ve belediye odaklı kategorizasyon sunmaz.
+Kişisel Profil & Gamification: Kullanıcıların haftalık/aylık karbon tasarrufu hedefleri belirleyebileceği bir arayüz.
 
-Farkımız: Projemiz, doğrudan son kullanıcıya hitap eden, düşük maliyetli donanımlara (webcam, Raspberry Pi vb.) entegre olabilen ve atık özelinde eğitilmiş bir yazılım çözümüdür.
+Liderlik Tablosu: Kampüs veya mahalle genelinde en çok karbon tasarrufu yapan kullanıcıların sergilenmesi.
 
-🎯 Başarı Kriteri
-Atıkların sistem tarafından %90 ve üzeri doğruluk oranıyla sınıflandırılması.
+4. Teknik Prototip Mimarisi
+Donanım: Kamera, Jetson Nano (Edge AI), Yük Hücresi (Ağırlık ölçümü için - Karbon hesabı hassasiyeti sağlar) ve Servo Motorlar.
 
-Görüntünün işlenip sonucun kullanıcıya iletilme süresinin 2 saniyenin altında kalması.
+Yazılım: * Backend: Python/Flask (AI modeli ve karbon hesaplama motoru).
 
-Yanlış kutuya atım oranının manuel sisteme göre %50'den fazla iyileştirilmesi.
+Database: Kullanıcı bazlı tasarruf verilerini tutan yapı (PostgreSQL/Firebase).
+
+Hesaplama Metriği: Örn: 1 ton geri dönüştürülmüş alüminyum = 9 ton CO 
+2
+​
+  tasarrufu.
+
+5. Pazar ve Rekabet Analizi
+Mevcut rakipler (Bower, Scrapp) sadece "atığı ayır ve puan kazan" modeline odaklanırken;
+
+Bizim Farkımız: Doğrudan Kimyasal Mühendisliği verilerine dayalı karbon hesaplaması sunarak çevresel etkiyi bilimsel ve kişisel bir düzeye indirmemizdir. Bu, özellikle kurumsal sürdürülebilirlik raporlaması yapmak isteyen üniversiteler ve şirketler için büyük bir katma değerdir.
+
+6. Kullanıcı Senaryosu
+Kullanıcı atığı akıllı üniteye gösterir.
+
+AI atığı tanımlar (Örn: Cam kavanoz).
+
+Ünite atığı doğru bölmeye gönderirken ekranda: "Tebrikler Beren! Bu camı dönüştürerek karbon ayak izini 0.3 kg azalttın." yazar.
+
+Veri kullanıcının mobil uygulamasına işlenir.
+
