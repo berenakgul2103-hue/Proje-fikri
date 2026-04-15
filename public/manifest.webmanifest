@@ -1,0 +1,16 @@
+{
+  "name": "EcoScan - Akilli Karbon Ayak Izi Takipcisi",
+  "short_name": "EcoScan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#16a34a",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
